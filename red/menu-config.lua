@@ -29,7 +29,7 @@ local suspend_command = [[dbus-send --print-reply --system --dest='org.freedeskt
 function menu.build(args)
 
 	local args = args or {}
-	local fm = args.fm or "nautilus"
+	local fm = args.fm or "dolphin"
 	local separator = args.separator or { widget = redflat.gauge.separator.horizontal() }
 	local theme = args.theme or {}
 	local icon_style = args.icon_style or {}
@@ -41,7 +41,7 @@ function menu.build(args)
 	-- Awesome submenu
 	------------------------------------------------------------
 	local awesomemenu = {
-		{ "Edit config",     "geany " .. awesome.conffile,  micon("gnome-system-config")  },
+		{ "Edit config",     "emacs " .. awesome.conffile,  micon("gnome-system-config")  },
 		{ "Restart",         awesome.restart,               micon("gnome-session-reboot") },
 		{ "Quit",            awesome.quit,                  micon("exit")                 },
 		separator,
@@ -52,7 +52,7 @@ function menu.build(args)
 	-- Exit submenu
 	------------------------------------------------------------
 	local exitmenu = {
-		{ "Reboot",          "user-shutdown -r now",      micon("gnome-session-reboot")  },
+		{ "Reboot",          "reboot",      micon("gnome-session-reboot")  },
 		{ "Switch user",     "dm-tool switch-to-greeter", micon("gnome-session-switch")  },
 		{ "Suspend",         suspend_command ,            micon("gnome-session-suspend") }
 	}
@@ -78,13 +78,13 @@ function menu.build(args)
 			{ "Places",          placesmenu,             micon("folder_home"), key = "c"  },
 			separator,
 			{ "Firefox",         "firefox",              micon("firefox")                 },
-			{ "Nemo",            "nemo",                 micon("folder")                  },
+			{ "Dolphin",         "dolphin",              micon("folder")                  },
 			{ "Ranger",          ranger_command,         micon("folder")                  },
 			{ "Geany",           "geany",                micon("geany")                   },
 			{ "Exaile",          "exaile",               micon("exaile")                  },
 			separator,
 			{ "Exit",            exitmenu,               micon("exit")                    },
-			{ "Shutdown",        "user-shutdown -h now", micon("system-shutdown")         }
+			{ "Shutdown",        "shutdown now",         micon("system-shutdown")         }
 		}
 	})
 

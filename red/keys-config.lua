@@ -146,7 +146,7 @@ function hotkeys:init(args)
 	self.raw_global = {
 		{ comment = "Global keys" },
 		{
-			args = { { self.mod,           }, "Return", function () awful.util.spawn(self.terminal) end },
+			args = { { self.mod, "Shift"    }, "Return", function () awful.util.spawn(self.terminal) end },
 			comment = "Spawn terminal emulator"
 		},
 		{
@@ -349,7 +349,7 @@ function hotkeys:init(args)
 		},
 		{ comment = "Tile control" },
 		{
-			args = { { self.mod, "Shift"   }, "j", function () awful.tag.incnmaster(1) end },
+			args = { { self.mod, "Shift"   }, "h", function () awful.tag.incnmaster(1) end },
 			comment = "Increase number of master windows by 1"
 		},
 		{
@@ -379,7 +379,7 @@ function hotkeys:init(args)
 			comment = "Toogle client sticky status"
 		},
 		{
-			args = { { self.mod,           }, "F4", function (c) c:kill() end },
+			args = { { self.mod, "Shift"   }, "c", function (c) c:kill() end },
 			comment = "Kill focused client"
 		},
 		{
@@ -427,6 +427,8 @@ function hotkeys:init(args)
 		}
 	}
 
+  local np_map = { 87, 88, 89, 83, 84, 85, 79, 80, 81 } -- Numpad Keys
+
 	-- bind
 	self.num = {}
 
@@ -439,6 +441,9 @@ function hotkeys:init(args)
 			self.num = awful.util.table.join(
 				self.num, awful.key(v.mod, "#" .. i + 9, naction(i, unpack(v.args)))
 			)
+      self.num = awful.util.table.join(
+				self.num, awful.key(v.mod, "#" .. np_map[i], naction(i, unpack(v.args)))
+      )
 		end
 	end
 

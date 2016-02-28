@@ -32,7 +32,7 @@ function desktop:init(args)
 	local netspeed = { geometry = wgeometry(grid, places.netspeed, workarea) }
 
 	netspeed.args = {
-		interface    = "wlan0",
+		interface    = "enp3s0",
 		maxspeed     = { up = 65*1024, down = 650*1024 },
 		crit         = { up = 60*1024, down = 600*1024 },
 		timeout      = 2,
@@ -46,7 +46,7 @@ function desktop:init(args)
 	local ssdspeed = { geometry = wgeometry(grid, places.ssdspeed, workarea) }
 
 	ssdspeed.args = {
-		interface = "sdb",
+		interface = "sda",
 		meter_function = system.disk_speed,
 		timeout   = 2,
 		label     = "SOLID DRIVE"
@@ -61,7 +61,7 @@ function desktop:init(args)
 	local hddspeed = { geometry = wgeometry(grid, places.hddspeed, workarea) }
 
 	hddspeed.args = {
-		interface = "sdc",
+		interface = "sdb",
 		meter_function = system.disk_speed,
 		timeout = 2,
 		label = "HARD DRIVE"
@@ -85,20 +85,20 @@ function desktop:init(args)
 
 	-- Transmission info
 	--------------------------------------------------------------------------------
-	local transm = { geometry = wgeometry(grid, places.transm, workarea) }
+	-- local transm = { geometry = wgeometry(grid, places.transm, workarea) }
 
-	transm.args = {
-		corners    = { num = 8, maxm = 100 },
-		lines      = { { maxm = 55, unit = { { "SEED", - 1 } } }, { maxm = 600, unit = { { "DNLD", - 1 } } } },
-		meter      = { func = system.transmission_parse },
-		timeout    = 5,
-		asyncshell = "transmission-remote -l"
-	}
+	-- transm.args = {
+	-- 	corners    = { num = 8, maxm = 100 },
+	-- 	lines      = { { maxm = 55, unit = { { "SEED", - 1 } } }, { maxm = 600, unit = { { "DNLD", - 1 } } } },
+	-- 	meter      = { func = system.transmission_parse },
+	-- 	timeout    = 5,
+	-- 	asyncshell = "transmission-remote -l"
+	-- }
 
-	transm.style = {
-		digit_num = 1,
-		image     = theme_path .. "/desktop/skull.svg"
-	}
+	-- transm.style = {
+	-- 	digit_num = 1,
+	-- 	image     = theme_path .. "/desktop/skull.svg"
+	-- }
 
 	-- Disks
 	--------------------------------------------------------------------------------
@@ -108,10 +108,8 @@ function desktop:init(args)
 		sensors  = {
 			{ meter_function = system.fs_info, maxm = 100, crit = 80, args = "/" },
 			{ meter_function = system.fs_info, maxm = 100, crit = 80, args = "/home" },
-			{ meter_function = system.fs_info, maxm = 100, crit = 80, args = "/opt" },
-			{ meter_function = system.fs_info, maxm = 100, crit = 80, args = "/mnt/media" }
 		},
-		names   = {"root", "home", "misc", "data"},
+		names   = {"root", "home"},
 		timeout = 300
 	}
 
@@ -127,7 +125,7 @@ function desktop:init(args)
 	thermal.args = {
 		sensors = {
 			{ meter_function = system.thermal.sensors, args = "'Physical id 0'", maxm = 100, crit = 75 },
-			{ meter_function = system.thermal.hddtemp, args = {disk = "/dev/sdc"}, maxm = 60, crit = 45 },
+			{ meter_function = system.thermal.hddtemp, args = {disk = "/dev/sda"}, maxm = 60, crit = 45 },
 			{ meter_function = system.thermal.nvoptimus, maxm = 105, crit = 80 }
 		},
 		names   = {"cpu", "hdd", "gpu"},
@@ -144,7 +142,7 @@ function desktop:init(args)
 	ssdspeed.widget = redflat.desktop.speedgraph(ssdspeed.args, ssdspeed.geometry, ssdspeed.style)
 	hddspeed.widget = redflat.desktop.speedgraph(hddspeed.args, hddspeed.geometry, hddspeed.style)
 	cpumem.widget = redflat.desktop.multim(cpumem.args, cpumem.geometry, cpumem.style)
-	transm.widget = redflat.desktop.multim(transm.args, transm.geometry, transm.style)
+	-- transm.widget = redflat.desktop.multim(transm.args, transm.geometry, transm.style)
 	disks.widget = redflat.desktop.dashpack(disks.args, disks.geometry, disks.style)
 	thermal.widget = redflat.desktop.simpleline(thermal.args, thermal.geometry, thermal.style)
 end

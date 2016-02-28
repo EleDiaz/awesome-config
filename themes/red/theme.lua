@@ -64,7 +64,7 @@ theme.cf_appswitcher = { font = "Play", size = 22, face = 1 } -- application swi
 theme.cf_monitor     = { font = "Play", size = 20, face = 1 } -- monitoring widget font
 
 -- environment vars
-theme.panel_height        = 50 -- panel height
+theme.panel_height        = 10 -- panel height
 theme.border_width        = 4  -- window border width
 theme.useless_gap_width   = 12 -- Lain useless gap
 theme.global_border_width = 0  -- Lain global border gap
@@ -448,13 +448,13 @@ theme.widget.layoutbox.name_alias = {
 -- Tasklist
 ------------------------------------------------------------
 theme.widget.tasklist = {
-	width = 50
+	width = 25
 }
 
 -- main
 theme.widget.tasklist.winmenu = {
 	micon       = theme.icon,
-	titleline   = { font = theme.font_title, height = 35 },
+	titleline   = { font = theme.font_title, height = 25 },
 	menu        = { width = 280, color = { right_icon = theme.color.icon } },
 	tagmenu     = { width = 200, color = { right_icon = theme.color.icon, left_icon = theme.color.icon } },
 	layout_icon = theme.widget.layoutbox.icon,
@@ -500,7 +500,7 @@ theme.widget.tasklist.appnames["Claws-mail"          ] = "CML"
 ------------------------------------------------------------
 theme.widget.minitray = {
 	border_width = 4,
-	geometry     = { height = 50 },
+	geometry     = { height = 25 },
 	screen_pos   = { { x = 1530, y = 960 } },
 	screen_gap   = theme.useless_gap_width + theme.global_border_width,
 	color        = { wibox = theme.color.wibox, border = theme.color.wibox }

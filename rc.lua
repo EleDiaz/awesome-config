@@ -58,10 +58,10 @@ end
 local theme_path = os.getenv("HOME") .. "/.config/awesome/themes/blue"
 beautiful.init(theme_path .. "/theme.lua")
 
-local terminal = "urxvt"
-local editor   = os.getenv("EDITOR") or "geany"
+local terminal = "terminator"
+local editor   = os.getenv("EDITOR") or "emacs"
 local editor_cmd = terminal .. " -e " .. editor
-local fm = "nemo"
+local fm = "dolphin"
 local modkey = "Mod4"
 
 -- Layouts setup
@@ -71,8 +71,8 @@ local layouts = require("red.layout-config") -- load file with layouts configura
 -- Tags
 -----------------------------------------------------------------------------------------------------------------------
 local tags = {
-	names  = { "Main", "Full", "Edit", "Read", "Free" },
-	layout = { layouts[7], layouts[8], layouts[8], layouts[7], layouts[2] },
+	names  = { "Term", "File", "Game", "Docs", "Hask", "Web", "Chat", "Play", "Inks"},
+	layout = { layouts[7], layouts[8], layouts[8], layouts[7], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2] },
 }
 
 for s = 1, screen.count() do tags[s] = awful.tag(tags.names, s, tags.layout) end
@@ -174,31 +174,31 @@ layoutbox.buttons = awful.util.table.join(
 
 -- Keyboard widget
 --------------------------------------------------------------------------------
-local kbindicator = {}
-kbindicator.widget = redflat.widget.keyboard({ layouts = { "English", "Russian" } })
-kbindicator.layout = wibox.layout.margin(kbindicator.widget, unpack(pmargin.kbindicator or {}))
+-- local kbindicator = {}
+-- kbindicator.widget = redflat.widget.keyboard({ layouts = { "English", "Russian" } })
+-- kbindicator.layout = wibox.layout.margin(kbindicator.widget, unpack(pmargin.kbindicator or {}))
 
-kbindicator.widget:buttons(awful.util.table.join(
-	awful.button({}, 1, function () redflat.widget.keyboard:toggle_menu() end),
-	awful.button({}, 3, function () awful.util.spawn_with_shell("sleep 0.1 && xdotool key 133+64+65") end),
-	awful.button({}, 4, function () redflat.widget.keyboard:toggle()      end),
-	awful.button({}, 5, function () redflat.widget.keyboard:toggle(true)  end)
-))
+-- kbindicator.widget:buttons(awful.util.table.join(
+-- 	awful.button({}, 1, function () redflat.widget.keyboard:toggle_menu() end),
+-- 	awful.button({}, 3, function () awful.util.spawn_with_shell("sleep 0.1 && xdotool key 133+64+65") end),
+-- 	awful.button({}, 4, function () redflat.widget.keyboard:toggle()      end),
+-- 	awful.button({}, 5, function () redflat.widget.keyboard:toggle(true)  end)
+-- ))
 
 -- Mail
 --------------------------------------------------------------------------------
-local mail_scripts      = { "mail1.py", "mail2.py" }
-local mail_scripts_path = "/home/vorron/Documents/scripts/"
+-- local mail_scripts      = { "mail1.py", "mail2.py" }
+-- local mail_scripts_path = "/home/vorron/Documents/scripts/"
 
-local mail = {}
-mail.widget = redflat.widget.mail({ path = mail_scripts_path, scripts = mail_scripts })
-mail.layout = wibox.layout.margin(mail.widget, unpack(pmargin.mail or {}))
+-- local mail = {}
+-- mail.widget = redflat.widget.mail({ path = mail_scripts_path, scripts = mail_scripts })
+-- mail.layout = wibox.layout.margin(mail.widget, unpack(pmargin.mail or {}))
 
--- buttons
-mail.widget:buttons(awful.util.table.join(
-	awful.button({ }, 1, function () awful.util.spawn_with_shell("claws-mail") end),
-	awful.button({ }, 2, function () redflat.widget.mail:update()                   end)
-))
+-- -- buttons
+-- mail.widget:buttons(awful.util.table.join(
+-- 	awful.button({ }, 1, function () awful.util.spawn_with_shell("claws-mail") end),
+-- 	awful.button({ }, 2, function () redflat.widget.mail:update()                   end)
+-- ))
 
 -- Tasklist
 --------------------------------------------------------------------------------
@@ -219,8 +219,8 @@ tasklist.buttons = awful.util.table.join(
 --------------------------------------------------------------------------------
 local cpu_storage = { cpu_total = {}, cpu_active = {} }
 local cpu_icon = redflat.util.check(beautiful, "icon.monitor")
-local net_icon = redflat.util.check(beautiful, "icon.wireless")
-local bat_icon = redflat.util.check(beautiful, "icon.battery")
+-- local net_icon = redflat.util.check(beautiful, "icon.wireless")
+-- local bat_icon = redflat.util.check(beautiful, "icon.battery")
 
 local net_speed = { up = 60 * 1024, down = 650 * 1024 }
 local net_alert = { up = 55 * 1024, down = 600 * 1024 }
@@ -246,7 +246,7 @@ monitor.widget = {
 		{ timeout = 2,  widget = redflat.gauge.doublemonitor, monitor = { icon = cpu_icon } }
 	),
 	net = redflat.widget.net(
-		{ interface = "wlan0", alert = net_alert, speed = net_speed, autoscale = false },
+		{ interface = "enp3s0", alert = net_alert, speed = net_speed, autoscale = false },
 		{ timeout = 2, widget = redflat.gauge.doublemonitor, monitor = { icon = net_icon } }
 	),
 	bat = redflat.widget.sysmon(
@@ -320,8 +320,8 @@ for s = 1, screen.count() do
 	-- Widgets that are aligned to the right
 	local right_layout = wibox.layout.fixed.horizontal()
 	local right_elements = {
-		single_sep, kbindicator.layout,
-		single_sep, mail.layout,
+		-- single_sep, kbindicator.layout,
+		-- single_sep, mail.layout,
 		single_sep, monitor.layout.net,
 		single_sep, monitor.layout.cpumem,
 		single_sep, volume.layout,
@@ -360,9 +360,9 @@ end
 
 -- Desktop widgets
 -----------------------------------------------------------------------------------------------------------------------
-local desktop = require("blue.desktop-config") -- load file with desktop widgets configuration
+-- local desktop = require("blue.desktop-config") -- load file with desktop widgets configuration
 
-desktop:init({ tpath = theme_path })
+-- desktop:init({ tpath = theme_path })
 
 -- Active screen edges
 -----------------------------------------------------------------------------------------------------------------------
@@ -473,5 +473,9 @@ awesome.connect_signal("exit",
 local stamp = timestamp.get()
 
 if not stamp or (os.time() - tonumber(stamp)) > 5 then
-	--awful.util.spawn_with_shell("compton")
+	awful.util.spawn_with_shell("compton")
+  awful.util.spawn_with_shell("nm-applet")
+  awful.util.spawn_with_shell("~/Telegram/Telegram")
+  awful.util.spawn_with_shell("kmix")
+  awful.util.spawn_with_shell("nitrogen --restore")
 end
