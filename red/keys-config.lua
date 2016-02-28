@@ -6,6 +6,8 @@
 local beautiful = require("beautiful")
 local awful = require("awful")
 local redflat = require("redflat")
+local scratch = require("scratch")
+
 
 -- Initialize tables and vars for module
 -----------------------------------------------------------------------------------------------------------------------
@@ -195,6 +197,11 @@ function hotkeys:init(args)
 			args = { { self.mod,           }, "Escape", awful.tag.history.restore },
 			comment = "View previously selected tag set"
 		},
+    { comment = "Scrachtpad" },
+    {
+			args = { { self.mod,           }, "t", function() scratch.drop("terminator", "top", "center", 1, 0.25, true) end },
+			comment = "Drop down terminal"
+    },
 		{ comment = "Widgets" },
 		{
 			args = { { self.mod,           }, "x", function() redflat.float.top:show() end },
@@ -332,13 +339,13 @@ function hotkeys:init(args)
 			comment = "Switch to previous client in group"
 		},
 		{
-			args = { { self.mod,           }, "t", function (c) redbar.toggle_view(client.focus) end },
+			args = { { self.mod, "Shift"   }, "t", function (c) redbar.toggle_view(client.focus) end },
 			comment = "Toggle focused titlebar view"
 		},
-		{
-			args = { { self.mod, "Shift"   }, "t", function (c) redbar.toggle_view_all() end },
-			comment = "Toggle all titlebar view"
-		},
+		-- {
+		-- 	args = { { self.mod, "Shift"   }, "t", function (c) redbar.toggle_view_all() end },
+		-- 	comment = "Toggle all titlebar view"
+		-- },
 		{
 			args = { { self.mod, "Control" }, "t", function (c) redbar.toggle(client.focus) end },
 			comment = "Toggle focused titlebar visible"
