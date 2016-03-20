@@ -467,10 +467,10 @@ function hotkeys:init(args)
 	-- client
 	self.mouse.client = awful.util.table.join(
 		awful.button({                     }, 1, function (c) client.focus = c; c:raise() end),
-		awful.button({                     }, 2, redflat.service.mouse.move),
+		awful.button({ self.mod            }, 1, redflat.service.mouse.move),
 		awful.button({ self.mod            }, 3, redflat.service.mouse.resize),
-		awful.button({                     }, 8, function(c) c:kill() end),
-		awful.button({ self.mod            }, 4, function (c) minimize_all_else(c) end),
+		-- awful.button({                     }, 8, function(c) c:kill() end),
+		-- awful.button({ self.mod            }, 4, function (c) minimize_all_else(c) end),
 		awful.button({ self.mod            }, 5,
 			function (c)
 					if has_minimized_one_else(c) then restore_all_else(c) end

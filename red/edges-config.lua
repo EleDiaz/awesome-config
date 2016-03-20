@@ -46,13 +46,13 @@ function edges:init(args)
 
 	-- Right
 	--------------------------------------------------------------------------------
-	local right = redflat.util.desktop.edge("vertical")
-	right.wibox:geometry(egeometry["right"])
+	--local right = redflat.util.desktop.edge("vertical")
+	--right.wibox:geometry(egeometry["right"])
 
-	right.layout:buttons(awful.util.table.join(
-		awful.button({}, 5, function() awful.tag.viewnext(mouse.screen) end),
-		awful.button({}, 4, function() awful.tag.viewprev(mouse.screen) end)
-	))
+	--right.layout:buttons(awful.util.table.join(
+	--	awful.button({}, 5, function() awful.tag.viewnext(mouse.screen) end),
+	--	awful.button({}, 4, function() awful.tag.viewprev(mouse.screen) end)
+	--))
 
 	-- Left
 	--------------------------------------------------------------------------------
