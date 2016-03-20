@@ -220,7 +220,7 @@ function hotkeys:init(args)
 			comment = "Run prompt"
 		},
 		{
-			args = { { self.mod            }, "r", function() redflat.float.apprunner:show() end },
+			args = { { self.mod            }, "f", function() redflat.float.apprunner:show() end },
 			comment = "Allication launcher"
 		},
 		{
@@ -378,7 +378,7 @@ function hotkeys:init(args)
 	self.raw_client = {
 		{ comment = "Client keys" }, -- fake element special for hotkeys helper
 		{
-			args = { { self.mod,           }, "f", function (c) c.fullscreen = not c.fullscreen end },
+			args = { { self.mod,           }, "b", function (c) c.fullscreen = not c.fullscreen end },
 			comment = "Set client fullscreen"
 		},
 		{
