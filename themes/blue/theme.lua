@@ -48,19 +48,19 @@ theme.path = os.getenv("HOME") .. "/.config/awesome/themes/blue"
 --------------------------------------------------------------------------------
 
 -- fonts
-theme.font        = "DejaVuSans 9"      -- main theme font
-theme.font_title  = "DejaVuSans bold 10" -- title font for widgets
-theme.font_clock  = "DejaVuSans bold 9" -- font for textclock widget
-theme.font_notify = "DejaVuSans bold 10" -- font for notify widget
+theme.font        = "Fantasque Sans Mono 12"      -- main theme font
+theme.font_title  = "Fantasque Sans Mono bold 11" -- title font for widgets
+theme.font_clock  = "Fantasque Sans Mono bold 11" -- font for textclock widget
+theme.font_notify = "DejaVuSans bold 12" -- font for notify widget
 
-theme.font_exaile_main = "DejaVuSans bold 10" -- main font for exaile widget
-theme.font_exaile_time = "DejaVuSans bold 10" -- time status font for exaile widget
+theme.font_exaile_main = "Fantasque Sans Mono bold 12" -- main font for exaile widget
+theme.font_exaile_time = "Fantasque Sans Mono bold 12" -- time status font for exaile widget
 
-theme.font_helper_title = "DejaVuSans bold 10" -- hotkeys helper title font
+theme.font_helper_title = "Fantasque Sans Mono bold 12" -- hotkeys helper title font
 
 -- cairo formated fonts
-theme.cf_appswitcher = { font = "DejaVuSans", size = 14, face = 1 } -- application switcher font
-theme.cf_tag         = { font = "DejaVuSans", size = 10, face = 1 } -- tag widget font
+theme.cf_appswitcher = { font = "Fantasque Sans Mono", size = 14, face = 1 } -- application switcher font
+theme.cf_tag         = { font = "Fantasque Sans Mono", size = 12, face = 1 } -- tag widget font
 
 -- environment vars
 theme.panel_height        = 30 -- panel height
@@ -102,7 +102,7 @@ theme.desktop.color = {
 -- Textbox
 ------------------------------------------------------------
 theme.desktop.common.textbox = {
-	font = { font = "prototype", size = 24, face = 0 }
+	font = { font = "Fantasque Sans Mono", size = 14, face = 0 }
 }
 
 -- Dashbar
@@ -220,8 +220,8 @@ theme.service.navigator = {
 	gradstep     = 60,
 	marksize     = { width = 160, height = 80, r = 20 },
 	linegap      = 32,
-	titlefont    = { font = "DejaVuSans", size = 28, face = 1, slant = 0 },
-	font         = { font = "DejaVuSans", size = 22, face = 1, slant = 0 },
+	titlefont    = { font = "Fantasque Sans Mono", size = 12, face = 1, slant = 0 },
+	font         = { font = "Fantasque Sans Mono", size = 12, face = 1, slant = 0 },
 	color        = { border = theme.color.main, mark = theme.color.gray, text = theme.color.wibox,
 	                 fbg1 = theme.color.main .. "40", fbg2 = theme.color.main .. "20",
 	                 bg1  = theme.color.gray .. "40", bg2  = theme.color.gray .. "20" }
@@ -254,8 +254,8 @@ theme.menu.color = {
 theme.titlebar = {
 	size          = 8,
 	position      = "top",
-	font          = "DejaVuSans Bold 14",
-	icon          = { size = 30, gap = 10 },
+	font          = "Fantasque Sans Mono Bold 12",
+	icon          = { size = 25, gap = 10 },
 	border_margin = { 0, 0, 0, 4 },
 	--color         = theme.color
 	color         = { text = theme.color.text, main = theme.color.main, gray = theme.color.gray,

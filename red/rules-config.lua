@@ -39,7 +39,7 @@ function rules:build(args)
       properties = { tag = tags[1][5] }
     },
     {
-      rule_any   = { role = { "browser" }},
+      rule_any   = { class = { "chromium" }},
       properties = { tag = tags[1][6] }
     },
     {

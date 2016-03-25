@@ -20,7 +20,7 @@ local function micon(name)
 end
 
 -- run commands
-local ranger_command  = function() awful.util.spawn_with_shell("urxvt -e $SHELL -ci 'ranger'") end
+local ranger_command  = function() awful.util.spawn_with_shell("terminator -e $SHELL -ci 'ranger'") end
 local suspend_command = [[dbus-send --print-reply --system --dest='org.freedesktop.UPower'
                           /org/freedesktop/UPower org.freedesktop.UPower.Suspend]]
 
@@ -80,8 +80,6 @@ function menu.build(args)
 			{ "Firefox",         "firefox",              micon("firefox")                 },
 			{ "Dolphin",         "dolphin",              micon("folder")                  },
 			{ "Ranger",          ranger_command,         micon("folder")                  },
-			{ "Geany",           "geany",                micon("geany")                   },
-			{ "Exaile",          "exaile",               micon("exaile")                  },
 			separator,
 			{ "Exit",            exitmenu,               micon("exit")                    },
 			{ "Shutdown",        "shutdown now",         micon("system-shutdown")         }
