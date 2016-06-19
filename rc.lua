@@ -58,10 +58,10 @@ end
 local theme_path = os.getenv("HOME") .. "/.config/awesome/themes/blue"
 beautiful.init(theme_path .. "/theme.lua")
 
-local terminal = "terminator"
+local terminal = "gnome-terminal"
 local editor   = os.getenv("EDITOR") or "emacs"
 local editor_cmd = terminal .. " -e " .. editor
-local fm = "dolphin"
+local fm = "nautilus --no-desktop"
 local modkey = "Mod4"
 
 -- Layouts setup
@@ -185,21 +185,6 @@ layoutbox.buttons = awful.util.table.join(
 -- 	awful.button({}, 5, function () redflat.widget.keyboard:toggle(true)  end)
 -- ))
 
--- Mail
---------------------------------------------------------------------------------
--- local mail_scripts      = { "mail1.py", "mail2.py" }
--- local mail_scripts_path = "/home/vorron/Documents/scripts/"
-
--- local mail = {}
--- mail.widget = redflat.widget.mail({ path = mail_scripts_path, scripts = mail_scripts })
--- mail.layout = wibox.layout.margin(mail.widget, unpack(pmargin.mail or {}))
-
--- -- buttons
--- mail.widget:buttons(awful.util.table.join(
--- 	awful.button({ }, 1, function () awful.util.spawn_with_shell("claws-mail") end),
--- 	awful.button({ }, 2, function () redflat.widget.mail:update()                   end)
--- ))
-
 -- Tasklist
 --------------------------------------------------------------------------------
 local tasklist = {}
@@ -304,7 +289,7 @@ for s = 1, screen.count() do
 	tasklist[s].layout = wibox.layout.margin(tasklist[s].widget, unpack(tasklist.margin or {}))
 
 	-- Create the wibox
-	panel[s] = awful.wibox({ type = "normal", position = "bottom", screen = s , height = beautiful.panel_height or 50})
+	panel[s] = awful.wibox({ type = "normal", position = "top", screen = s , height = beautiful.panel_height or 19})
 
 	-- Widgets that are aligned to the left
 	local left_layout = wibox.layout.fixed.horizontal()

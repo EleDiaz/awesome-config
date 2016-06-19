@@ -4,17 +4,34 @@
 
 local theme = {}
 
+
+	-- main      = "#246b99",
+	-- gray      = "#575757",
+	-- bg        = "#161616",
+	-- bg_second = "#181818",
+	-- wibox     = "#202020",
+	-- icon      = "#a0a0a0",
+	-- text      = "#aaaaaa",
+	-- urgent    = "#a22814",
+	-- highlight = "#ffffff",
+
+	-- border    = "#404040",
+	-- shadow1   = "#141414",
+	-- shadow2   = "#313131",
+	-- shadow3   = "#1c1c1c",
+	-- shadow4   = "#767676"
+
 -- Color scheme
 -----------------------------------------------------------------------------------------------------------------------
 theme.color = {
-	main      = "#246b99",
+	main      = "#b1222b",
 	gray      = "#575757",
 	bg        = "#161616",
 	bg_second = "#181818",
 	wibox     = "#202020",
 	icon      = "#a0a0a0",
 	text      = "#aaaaaa",
-	urgent    = "#a22814",
+	urgent    = "#32882d",
 	highlight = "#ffffff",
 
 	border    = "#404040",
@@ -63,9 +80,9 @@ theme.cf_appswitcher = { font = "Fantasque Sans Mono", size = 14, face = 1 } -- 
 theme.cf_tag         = { font = "Fantasque Sans Mono", size = 12, face = 1 } -- tag widget font
 
 -- environment vars
-theme.panel_height        = 30 -- panel height
-theme.border_width        = 2  -- window border width
-theme.useless_gap_width   = 2  -- Lain useless gap
+theme.panel_height        = 20 -- panel height
+theme.border_width        = 0  -- window border width
+theme.useless_gap_width   = 0  -- Lain useless gap
 theme.global_border_width = 0  -- Lain global border gap
 
 -- grid layout prop
@@ -114,11 +131,11 @@ theme.desktop.common.dashbar = {
 -- Barpack
 ------------------------------------------------------------
 theme.desktop.common.barpack = {
-	label_style = { width = 80, draw = "by_width" },
-	text_style  = { width = 92, draw = "by_edges" },
+	label_style = { width = 50, draw = "by_width" },
+	text_style  = { width = 60, draw = "by_edges" },
 	line_height = theme.desktop.line_height,
-	text_gap    = 22,
-	label_gap   = 16,
+	text_gap    = 10,
+	label_gap   = 5,
 	color       = theme.desktop.color
 }
 
@@ -332,10 +349,10 @@ theme.gauge.doublemonitor = {
 -- Tag
 ------------------------------------------------------------
 theme.gauge.bluetag = {
-	width    = 103,
+	width    = 50,
 	font     = theme.cf_tag,
-	point    = { width = 80, height = 3, gap = 27, dx = 5 },
-	text_gap = 20,
+	point    = { width = 50, height = 3, gap = 0, dx = 0 },
+	text_gap = 14,
 	color    = theme.color
 }
 
@@ -345,8 +362,8 @@ theme.gauge.bluetask = {
 	width    = 80,
 	show_min = true,
 	font     = theme.cf_tag,
-	point    = { width = 70, height = 3, gap = 27, dx = 5 },
-	text_gap = 20,
+	point    = { width = 50, height = 3, gap = 0, dx = 0 },
+	text_gap = 14,
 	color    = theme.color
 }
 
@@ -461,9 +478,9 @@ theme.widget.layoutbox.name_alias = {
 -- Tasklist
 ------------------------------------------------------------
 theme.widget.tasklist = {
-	width       = 70,
-	char_digit  = 5,
-	task        = theme.gauge.bluetask
+	width       = 100,
+	char_digit  = 0,
+	task        = theme.gauge.bluetask,
 }
 
 -- main
@@ -514,7 +531,7 @@ theme.widget.tasklist.appnames["URxvt"               ] = "RXVT"
 theme.widget.minitray = {
 	border_width = 0,
 	geometry     = { height = 40 },
-	screen_pos   = { { x = 1800, y = 1110 } },
+	screen_pos   = { { x = 1800, y = 20 } },
 	screen_gap   = theme.useless_gap_width + theme.global_border_width,
 	color        = { wibox = theme.color.wibox, border = theme.color.wibox }
 }
@@ -650,7 +667,7 @@ theme.float.prompt = {
 theme.float.top = {
 	geometry      = { width = 460, height = 400 },
 	screen_gap    = theme.useless_gap_width + theme.global_border_width,
-	screen_pos    = { { x =1460, y = 640 } },
+	screen_pos    = { { x =1460, y = 20 } },
 	border_margin = { 20, 20, 10, 0 },
 	button_margin = { 140, 140, 18, 18 },
 	title_height  = 40,
